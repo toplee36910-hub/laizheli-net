@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>安远 · 来这里</title>
+  <meta name="description" content="安远的写作、音乐和档案。有些故事，讲给懂的人听。">
+  <meta property="og:title" content="安远 · 来这里">
+  <meta property="og:description" content="有些故事，讲给懂的人听。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://laizheli.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=Noto+Serif+SC:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      background: #f6f2eb;
+      background-image: radial-gradient(ellipse 70% 60% at 80% 15%, #efe8d8 0%, #f6f2eb 50%, #ece5d8 100%);
+      color: #3a3530;
+      font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', 'STSong', serif;
+      display: flex;
+      justify-content: center;
+      padding: 10vh 1.5rem 6vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.en {
+      font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+    }
+
+    .container {
+      max-width: 540px;
+      width: 100%;
+      text-align: center;
+      animation: rise 1s ease-out;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── 语言切换（醒目按钮） ── */
+    .lang {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 10;
+    }
+
+    .lang-btn {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border: 1px solid #c8bfb0;
+      border-radius: 20px;
+      background: rgba(246,242,235,0.9);
+      backdrop-filter: blur(4px);
+      font-size: 0.85rem;
+      font-family: 'Noto Serif SC', serif;
+      color: #6a5d4d;
+      text-decoration: none;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    .lang-btn:hover {
+      background: #ece7dd;
+      border-color: #8a7e6e;
+      color: #3a3530;
+    }
+
+    body.en .lang-btn {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+    }
+
+    /* ── 语言区块 ── */
+    .lang-en { display: none; }
+
+    body.en .lang-zh { display: none; }
+    body.en .lang-en { display: block; }
+
+    /* ── 名字（签名图片） ── */
+    .name {
+      display: inline-block;
+      margin-bottom: 0.3rem;
+    }
+
+    .name img {
+      height: 3.2rem;
+      width: auto;
+      display: block;
+    }
+
+    body.en .name img {
+      height: 2.8rem;
+    }
+
+    /* ── 问候语 ─ */
+    .greeting {
+      font-family: 'ZCOOL XiaoWei', 'STKaiti', 'KaiTi', serif;
+      font-size: 1.25rem;
+      color: #6a5d4d;
+      margin-top: 0.5rem;
+      letter-spacing: 0.1em;
+    }
+
+    body.en .greeting {
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── 分隔线 ── */
+    .rule {
+      width: 36px;
+      height: 1px;
+      background: #d4ccc0;
+      margin: 2.5rem auto;
+    }
+
+    /* ── 引言 ── */
+    .tagline {
+      font-size: 1.05rem;
+      line-height: 2;
+      color: #6a5d4d;
+      margin-bottom: 3rem;
+      letter-spacing: 0.03em;
+    }
+
+    body.en .tagline {
+      font-size: 1.1rem;
+      line-height: 1.9;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── 卡片 ── */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      display: block;
+      padding: 1.5rem 1rem;
+      background: #fff;
+      border: 1px solid #e4ddd2;
+      border-radius: 5px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+
+    .card:hover {
+      border-color: #c8bfb0;
+      box-shadow: 0 2px 12px rgba(80,60,30,0.06);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.6rem;
+      color: #b0a694;
+      line-height: 1;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #3a3530;
+      margin-bottom: 0.3rem;
+    }
+
+    body.en .card-title {
+      font-size: 1.08rem;
+    }
+
+    .card-desc {
+      font-size: 0.78rem;
+      color: #9a8e7e;
+      line-height: 1.5;
+    }
+
+    body.en .card-desc {
+      font-size: 0.82rem;
+      font-style: italic;
+    }
+
+    /* ── 订阅 ── */
+    .subscribe {
+      margin-bottom: 2.5rem;
+    }
+
+    .subscribe a {
+      color: #6a5d4d;
+      text-decoration: none;
+      font-size: 0.88rem;
+      border-bottom: 1px solid #d4ccc0;
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .subscribe a:hover {
+      color: #3a3530;
+      border-color: #8a7e6e;
+    }
+
+    /* ── 底栏 ── */
+    .bottom {
+      padding-top: 1.8rem;
+      border-top: 1px solid #e4ddd2;
+      font-size: 0.82rem;
+      color: #a09888;
+      line-height: 2;
+    }
+
+    .bottom a {
+      color: #8a7e6e;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .bottom a:hover { color: #4a4035; }
+
+    /* ── 响应式 ── */
+    @media (max-width: 480px) {
+      body { padding: 7vh 1.2rem 4vh; }
+      .name { font-size: 3rem; }
+      body.en .name { font-size: 2rem; }
+      .greeting { font-size: 1.1rem; }
+      .tagline { font-size: 0.98rem; }
+      body.en .tagline { font-size: 1.02rem; }
+      .cards { gap: 0.6rem; }
+      .card { padding: 1.2rem 0.8rem; }
+      .lang { top: 1rem; right: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lang">
+    <span class="lang-zh"><a class="lang-btn" onclick="switchLang('en')">EN</a></span>
+    <span class="lang-en"><a class="lang-btn" onclick="switchLang('zh')">中文</a></span>
+  </div>
+
+  <main class="container">
+
+    <!-- ═══════ 中文版 ═══════ -->
+    <div class="lang-zh">
+      <h1 class="name"><img src="signature.png" alt="安远"></h1>
+      <p class="greeting">你来了</p>
+
+      <div class="rule"></div>
+
+      <p class="tagline">
+        有些故事，讲给懂的人听。<br>
+        这里有一个人写的小说、听的歌、<br>
+        和一些舍不得忘掉的事。
+      </p>
+
+      <nav class="cards">
+        <a class="card" href="https://bsda.com.cn/novel/">
+          <div class="card-icon">✦</div>
+          <div class="card-title">半生档案</div>
+          <div class="card-desc">一部长篇小说，三十年</div>
+        </a>
+        <a class="card" href="https://bsda.com.cn/archives/">
+          <div class="card-icon">✎</div>
+          <div class="card-title">影评与剧评</div>
+          <div class="card-desc">在别人的故事里，看见自己</div>
+        </a>
+        <a class="card" href="https://bsda.com.cn/music/">
+          <div class="card-icon">♪</div>
+          <div class="card-title">音乐</div>
+          <div class="card-desc">木林林，四张原创专辑</div>
+        </a>
+        <a class="card" href="https://bsda.com.cn/media/">
+          <div class="card-icon">☰</div>
+          <div class="card-title">史料档案</div>
+          <div class="card-desc">报道、纪录片与影像</div>
+        </a>
+      </nav>
+
+      <div class="subscribe">
+        <a href="https://bsda.com.cn/blog/">订阅他的来信 &rarr;</a>
+      </div>
+
+      <footer class="bottom">
+        <a href="https://bsda.com.cn/about/">关于他</a><br>
+        <a href="https://bsda.com.cn">bsda.com.cn</a>
+      </footer>
+    </div>
+
+    <!-- ═══════ English ═══════ -->
+    <div class="lang-en">
+      <h1 class="name"><img src="signature.png" alt="An Yuan"></h1>
+      <p class="greeting">You made it.</p>
+
+      <div class="rule"></div>
+
+      <p class="tagline">
+        Some stories are told in quieter places.<br>
+        Novels, music, and memories<br>
+        from thirty years of living honestly.
+      </p>
+
+      <nav class="cards">
+        <a class="card" href="https://bsda.com.cn/en/">
+          <div class="card-icon">✦</div>
+          <div class="card-title">The Dossier of a Half-Life</div>
+          <div class="card-desc">A novel spanning thirty years</div>
+        </a>
+        <a class="card" href="https://bsda.com.cn/archives/">
+          <div class="card-icon">✎</div>
+          <div class="card-title">Film &amp; Theater</div>
+          <div class="card-desc">Seeing myself in other people's stories</div>
+        </a>
+        <a class="card" href="https://bsda.com.cn/music/">
+          <div class="card-icon">♪</div>
+          <div class="card-title">Music</div>
+          <div class="card-desc">Four original albums, as Mu Linlin</div>
+        </a>
+        <a class="card" href="https://bsda.com.cn/media/">
+          <div class="card-icon">☰</div>
+          <div class="card-title">Archive</div>
+          <div class="card-desc">Documentaries, press &amp; media</div>
+        </a>
+      </nav>
+
+      <div class="subscribe">
+        <a href="https://bsda.com.cn/blog/">Subscribe &rarr;</a>
+      </div>
+
+      <footer class="bottom">
+        <a href="https://bsda.com.cn/about/">About</a><br>
+        <a href="https://bsda.com.cn">bsda.com.cn</a>
+      </footer>
+    </div>
+
+  </main>
+
+  <script>
+    function switchLang(lang) {
+      document.body.classList.toggle('en', lang === 'en');
+      document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+      document.title = lang === 'en'
+        ? 'An Yuan \u00B7 Laizheli'
+        : '\u5B89\u8FDC \u00B7 \u6765\u8FD9\u91CC';
+    }
+  </script>
+</body>
+</html>
