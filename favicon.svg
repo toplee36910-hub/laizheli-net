@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- 安远个人网站 Logo — "安" 字 + 档案纸底色 -->
+  <rect width="128" height="128" rx="20" fill="#f3efe6"/>
+  <!-- 手写风 "安" 字 -->
+  <text x="64" y="90" text-anchor="middle"
+    font-family="'Noto Serif SC', 'Songti SC', serif"
+    font-size="80" font-weight="700"
+    fill="#8b6f47">安</text>
+  <style>
+    @media (prefers-color-scheme: dark) {
+      rect { fill: #1a1815; }
+      text { fill: #c4a97d; }
+    }
+  </style>
+</svg>
